@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import MemberForm from "@/Form/memberForm";
+import MemberForm from "@/Form/MemberForm";
 import axios from "axios";
 import { toast } from "sonner";
 

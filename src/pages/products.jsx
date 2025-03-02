@@ -26,7 +26,7 @@ import {
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import ProductForm from "@/Form/productForm" // Changed form import to product form
+import ProductForm from "@/Form/ProductForm" // Changed form import to product form
 import axios from "axios"
 import { toast } from "sonner"
 
