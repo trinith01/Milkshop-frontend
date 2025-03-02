@@ -1,56 +1,80 @@
-import { SignIn } from "@clerk/clerk-react";
-import { AuroraText } from "@/components/magicui/aurora-text";
-import { MorphingText } from "@/components/magicui/morphing-text";
-import { Milk, ChevronsUpIcon as Cheese, ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
+"use client"
 
-const texts = [
-  "Fresh Milk",
-  "Cheese",
-  "Butter",
-  "Cream",
-  "Yogurt",
-  "Dairy",
-  "Smooth",
-  "Tasty",
-  "Farm Fresh",
-];
+import { SignIn } from "@clerk/clerk-react"
+import { ShoppingCart, Truck, BarChart4, Users } from "lucide-react"
 
-export default function LandingPage() {
+export default function SignInPage() {
   return (
-    <div className="h-screen bg-gradient-to-b ">
-      {/* Single Section with Flex Layout */}
-      <div className="flex flex-col md:flex-row h-full w-full max-w-7xl mx-auto px-6 py-12 gap-12">
-        {/* Left Section with AuroraText and MorphingText */}
-        <div className="flex-1 flex flex-col justify-center items-start">
-          <div className="mb-8 relative">
-           
-            <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
-              Sign In To <AuroraText>Shop Dairy World</AuroraText>
-            </h1>
-            <p className="text-lg text-gray-600 mt-4 max-w-xl">
-              Your daily dose of fresh dairy is just a click away! Experience
-              the richness of farm-fresh products delivered to your doorstep.
-            </p>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl w-full">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
+          {/* Left Column - Hero Content */}
+          <div className="w-full lg:w-1/2 space-y-8">
+            <div className="space-y-4">
+              <h1 className="text-4xl sm:text-5xl font-bold text-blue-900 leading-tight">
+                Streamline Your Dairy Business Operations
+              </h1>
+              <p className="text-xl text-gray-600 max-w-2xl">
+                Our comprehensive point-of-sale system is tailored for dairy farmers, retailers, and distributors.
+                Efficiently manage inventory, track sales, and grow your business with ease.
+              </p>
+            </div>
 
-        {/* Right Section with SignIn */}
-        <div className="flex-1 flex flex-col justify-center items-center gap-8">
-          <div className="relative w-full max-w-sm">
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-blue-100 rounded-full opacity-50 blur-xl"></div>
-            <div className="relative z-10">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                <ShoppingCart className="h-6 w-6 text-blue-600" />
+                <span className="text-sm font-medium text-gray-800">Streamlined Sales</span>
+              </div>
+              <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                <Truck className="h-6 w-6 text-blue-600" />
+                <span className="text-sm font-medium text-gray-800">Delivery Management</span>
+              </div>
+              <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                <BarChart4 className="h-6 w-6 text-blue-600" />
+                <span className="text-sm font-medium text-gray-800">Advanced Analytics</span>
+              </div>
+              <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                <Users className="h-6 w-6 text-blue-600" />
+                <span className="text-sm font-medium text-gray-800">Customer Insights</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Sign In */}
+          <div className="w-full lg:w-1/2">
+            <div className="bg-white shadow-xl rounded-2xl max-w-md mx-auto">
               <SignIn
                 appearance={{
                   elements: {
-                    card: "shadow-lg rounded-lg p-8 bg-gray-800",
-                    headerTitle: "text-3xl font-bold text-white",
-                    formFieldLabel: "text-white", // Ensure labels are readable
+                    rootBox: "w-full",
+                    card: "shadow-none p-8 bg-transparent w-full",
+                    headerTitle: "text-2xl font-bold text-gray-900 text-center",
+                    headerSubtitle: "text-base text-gray-600 text-center mt-2 mb-6",
+                    socialButtonsBlockButton:
+                      "w-full border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 py-3 px-6 rounded-lg mb-2 relative",
+                    socialButtonsBlockButtonText: "font-medium text-gray-700",
+                    dividerLine: "bg-gray-200",
+                    dividerText: "text-gray-500 mx-4 bg-white px-3",
+                    formFieldLabel: "text-sm font-medium text-gray-700 mb-1.5",
                     formFieldInput:
-                      "border border-gray-700 bg-gray-900 text-white",
-                    socialButtons: "bg-blue-600 hover:bg-blue-700",
+                      "w-full px-6 py-3 bg-gray-50 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
                     formButtonPrimary:
-                      "bg-blue-500 text-white hover:bg-blue-600",
+                      "w-full bg-[#0071e3] hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg mt-6 transition-colors",
+                    footerActionText: "text-sm text-gray-600 text-center mt-6",
+                    footerActionLink: "text-[#0071e3] hover:text-blue-700 font-medium",
+                    formFieldAction: "text-sm text-[#0071e3] hover:text-blue-700",
+                    identityPreviewText: "text-gray-700",
+                    identityPreviewEditButton: "text-[#0071e3] hover:text-blue-700",
+                    formField: "mb-4",
+                  },
+                  layout: {
+                    socialButtonsPlacement: "top",
+                    socialButtonsVariant: "blockButton",
+                    shimmer: true,
+                  },
+                  variables: {
+                    borderRadius: "8px",
+                    spacingUnit: "4px",
                   },
                 }}
               />
@@ -59,5 +83,6 @@ export default function LandingPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
+
