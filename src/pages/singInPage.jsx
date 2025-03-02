@@ -18,13 +18,13 @@ const texts = [
 
 export default function LandingPage() {
   return (
-    <div className="h-screen bg-gradient-to-b from-white to-blue-50">
+    <div className="h-screen bg-gradient-to-b ">
       {/* Single Section with Flex Layout */}
       <div className="flex flex-col md:flex-row h-full w-full max-w-7xl mx-auto px-6 py-12 gap-12">
         {/* Left Section with AuroraText and MorphingText */}
         <div className="flex-1 flex flex-col justify-center items-start">
           <div className="mb-8 relative">
-            <div className="absolute -top-10 -left-10 w-24 h-24 bg-blue-100 rounded-full opacity-50 blur-xl"></div>
+           
             <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
               Sign In To <AuroraText>Shop Dairy World</AuroraText>
             </h1>
