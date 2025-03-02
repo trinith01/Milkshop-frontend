@@ -25,6 +25,8 @@ const formSchema = z.object({
 });
 
 export default function MemberForm({ editMode, setDialogOpen, id ,setReloadData }) {
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
+
   const [loading, setLoading] = useState(false);
   const [defaultValues, setDefaultValues] = useState({
     name: "",
@@ -43,7 +45,7 @@ export default function MemberForm({ editMode, setDialogOpen, id ,setReloadData 
     if (editMode && id) {
       const fetchMember = async () => {
         try {
-          const res = await axios.get(`http://localhost:3000/employees/${id}`);
+          const res = await axios.get(`${backendURL}/employee/${id}`);
           setDefaultValues(res.data);
           form.reset(res.data); // Update form state
         } catch (error) {
@@ -58,12 +60,12 @@ export default function MemberForm({ editMode, setDialogOpen, id ,setReloadData 
     setLoading(true);
     try {
       if (editMode) {
-        await axios.put(`http://localhost:3000/employees/${id}`, values);
+        await axios.put(`${backendURL}/employees/${id}`, values);
         toast.success("✅ Member updated successfully!");
         setReloadData(pre => !pre);
         setDialogOpen(false);
       } else {
-        await axios.post("http://localhost:3000/employees", values);
+        await axios.post(`${backendURL}/employees`, values);
         toast.success("✅ Member added successfully! 🎉");
         setReloadData(pre => !pre);
         setDialogOpen(false);

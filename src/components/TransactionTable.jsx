@@ -17,7 +17,8 @@ import { toast } from "sonner"
 import { Separator } from "./ui/separator"
 
 export default function TransactionTable() {
-  const backendURL = process.env.REACT_APP_BACKEND_URL;
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
+
   //   const [searchCriteria, setSearchCriteria] = useState("nic")
   const [transactions, setTransactions] = useState([])
   //   const [searchQuery, setSearchQuery] = useState("")

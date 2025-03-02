@@ -42,6 +42,8 @@ const formSchema = z.object({
 
 
 export default function ProductForm({ editMode, setDialogOpen, id ,setReloadData }) {
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
+
   const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -57,7 +59,7 @@ export default function ProductForm({ editMode, setDialogOpen, id ,setReloadData
     if (editMode && id) {
       const fetchProduct = async () => {
         try {
-          const res = await axios.get(`http://localhost:3000/products/${id}`);
+          const res = await axios.get(`${backendURL}/products/${id}`);
           form.reset({name:res.data.name ,price:res.data.price, stockCount: res.data.stockCount, expireDate: new Date(res.data.expireDate)});
         } catch (error) {
           toast.error("Failed to fetch product data.");
@@ -71,12 +73,12 @@ export default function ProductForm({ editMode, setDialogOpen, id ,setReloadData
     setLoading(true);
     try {
       if (editMode) {
-        await axios.put(`http://localhost:3000/products/${id}`, values);
+        await axios.put(`${backendURL}/products/${id}`, values);
         toast.success("✅ Product updated successfully!");
         setReloadData(pre => !pre);
         setDialogOpen(false)
       } else {
-        await axios.post("http://localhost:3000/products", values);
+        await axios.post(`${backendURL}/products`, values);
         toast.success("✅ Product added successfully! 🎉");
         setReloadData(pre => !pre);
         setDialogOpen(false);

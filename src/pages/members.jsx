@@ -39,7 +39,7 @@ import axios from "axios";
 import { toast } from "sonner";
 
 export default function MembersPage() {
-  const backendURL = process.env.REACT_APP_BACKEND_URL
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
   const [members, setMembers] = useState([]);
   const [reloadData, setReloadData] = useState(false);
 

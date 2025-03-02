@@ -32,7 +32,7 @@ import { toast } from "sonner"
 
 
 export default function ProductsPage() {
-  const backendURL = process.env.REACT_APP_BACKEND_URL;
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
   const [products, setProducts] = useState([]);
   const [reloadData, setReloadData] = useState(false);
 
