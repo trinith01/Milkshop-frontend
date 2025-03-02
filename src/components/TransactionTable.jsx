@@ -17,6 +17,7 @@ import { toast } from "sonner"
 import { Separator } from "./ui/separator"
 
 export default function TransactionTable() {
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   //   const [searchCriteria, setSearchCriteria] = useState("nic")
   const [transactions, setTransactions] = useState([])
   //   const [searchQuery, setSearchQuery] = useState("")
@@ -35,7 +36,7 @@ export default function TransactionTable() {
     setError(null)
 
     try {
-      const res = await axios.get("http://localhost:3000/transactions", {
+      const res = await axios.get(`${backendURL}/transactions`, {
         params: {
           startDate: startDate || undefined, 
           endDate: endDate || undefined,
@@ -66,7 +67,7 @@ export default function TransactionTable() {
   const handleDelete = async(id) => {
     console.log(`Delete transaction with id: ${id}`)
     try{
-      const res = await axios.delete(`http://localhost:3000/transactions/${id}`)
+      const res = await axios.delete(`${backendURL}/transactions/${id}`)
       if(res.status === 200){
         toast.success('Transaction deleted successfully')
         setRefetch(!refetch)

@@ -39,13 +39,14 @@ import axios from "axios";
 import { toast } from "sonner";
 
 export default function MembersPage() {
+  const backendURL = process.env.REACT_APP_BACKEND_URL
   const [members, setMembers] = useState([]);
   const [reloadData, setReloadData] = useState(false);
 
   useEffect(() => {
     const getAllEmployees = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/employees");
+        const response = await axios.get(`${backendURL}/employees`);
         setMembers(response.data);
       } catch (error) {
         console.error("Error fetching members:", error);
@@ -68,7 +69,7 @@ export default function MembersPage() {
 
   const handleDeleteMember = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/employees/${id}`);
+      await axios.delete(`${backendURL}/employees/${id}`);
       setDeleteDialogOpen(false);
       toast.success(`🗑️ **Member deleted successfully! 😊`);
       setReloadData((prev) => !prev); // Trigger re-fetch

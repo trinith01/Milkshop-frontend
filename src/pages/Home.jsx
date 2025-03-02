@@ -55,6 +55,7 @@ import {
 import { useUser } from "@clerk/clerk-react";
 
 export default function Home() {
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   const [editingPriceId, setEditingPriceId] = useState(null);
   const [tempCustomPrice, setTempCustomPrice] = useState("");
   const [products, setProducts] = useState([]);
@@ -77,17 +78,17 @@ export default function Home() {
       try {
         // Fetch products
         const productsResponse = await axios.get(
-          "http://localhost:3000/products"
+          `${backendURL}/products`
         );
         const recent = await axios.get(
-          "http://localhost:3000/transactions/recent"
+          `${backendURL}/transactions/recent`
         );
         setProducts(productsResponse.data);
         setRecentTransactions(recent.data);
 
         // Fetch employees
         const employeesResponse = await axios.get(
-          "http://localhost:3000/employees"
+          `${backendURL}/employees`
         );
         setUsers(employeesResponse.data);
       } catch (error) {
@@ -257,7 +258,7 @@ export default function Home() {
         productIncome: totalProductsCost,
       };
       console.log("transaction data:", data);
-      const res = await axios.post("http://localhost:3000/transactions", data);
+      const res = await axios.post(`${backendURL}/transactions`, data);
       toast.success("Transaction Successful !");
       setTimeout(() => {
         setActiveTab("history");

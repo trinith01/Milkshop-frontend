@@ -30,14 +30,16 @@ import ProductForm from "@/Form/productForm" // Changed form import to product f
 import axios from "axios"
 import { toast } from "sonner"
 
+
 export default function ProductsPage() {
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   const [products, setProducts] = useState([]);
   const [reloadData, setReloadData] = useState(false);
 
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/products");
+        const response = await axios.get(`${backendURL}/products`);
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -60,7 +62,7 @@ export default function ProductsPage() {
 
   const handleDeleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/products/${id}`);
+      await axios.delete(`${backendURL}/products/${id}`);
       setDeleteDialogOpen(false);
       toast.success(`🗑️ **Product deleted successfully! 😊`);
       setReloadData((prev) => !prev); // Trigger re-fetch
