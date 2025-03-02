@@ -39,7 +39,7 @@ export default function MemberForm({ editMode, setDialogOpen, id, setReloadData 
     if (editMode && id) {
       const fetchMember = async () => {
         try {
-          const res = await axios.get(`${backendURL}/employee/${id}`)
+          const res = await axios.get(`${backendURL}/employees/${id}`)
           setDefaultValues(res.data)
           form.reset(res.data) // Update form state
         } catch (error) {
