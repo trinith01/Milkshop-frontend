@@ -666,7 +666,7 @@ export default function Home() {
                           </Card>
                         </Link>
 
-                        <Link to="/reports" className="no-underline">
+                        {/* <Link to="/reports" className="no-underline">
                           <Card className="border-2 border-dashed hover:border-primary hover:bg-primary/5 transition-colors cursor-pointer h-full">
                             <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
                               <History className="h-8 w-8 text-muted-foreground mb-2" />
@@ -675,18 +675,9 @@ export default function Home() {
                               </h3>
                             </CardContent>
                           </Card>
-                        </Link>
+                        </Link> */}
 
-                        <Link to="/settings" className="no-underline">
-                          <Card className="border-2 border-dashed hover:border-primary hover:bg-primary/5 transition-colors cursor-pointer h-full">
-                            <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
-                              <CreditCard className="h-8 w-8 text-muted-foreground mb-2" />
-                              <h3 className="font-medium text-sm">
-                                Payment Settings
-                              </h3>
-                            </CardContent>
-                          </Card>
-                        </Link>
+                      
                       </motion.div>
                     </CardContent>
                   </Card>
